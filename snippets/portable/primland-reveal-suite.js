@@ -58,13 +58,42 @@
 
     function animateText(node) {
       if (!node || node.dataset.primlandRevealReady === "1") return;
+
+      if (global.matchMedia && global.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        node.dataset.primlandRevealReady = "1";
+        node.style.opacity = "1";
+        node.style.filter = "none";
+        return;
+      }
+      if (!global.gsap || !global.SplitType) {
+        if (node.dataset.primlandRevealWaiting === "1") return;
+        node.dataset.primlandRevealWaiting = "1";
+
+        var attempts = 0;
+        (function retryUntilReady() {
+          if (global.gsap && global.SplitType) {
+            node.dataset.primlandRevealWaiting = "0";
+            animateText(node);
+            return;
+          }
+
+          attempts += 1;
+          if (attempts >= 50) {
+            node.dataset.primlandRevealWaiting = "0";
+            node.dataset.primlandRevealReady = "1";
+            node.style.opacity = "1";
+            node.style.filter = "none";
+            return;
+          }
+
+          global.setTimeout(retryUntilReady, 100);
+        })();
+        return;
+      }
+
       node.dataset.primlandRevealReady = "1";
       node.style.opacity = "1";
       node.style.filter = "none";
-
-      if (global.matchMedia && global.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      if (!global.gsap || !global.SplitType) return;
-
       var split = new global.SplitType(node, { types: "words" });
       global.gsap.fromTo(
         split.words,
@@ -228,11 +257,12 @@
     };
     options.directRules = Array.isArray(options.directRules) ? options.directRules : [];
 
+    runBehavior(options);
+
     return loadScript(options.gsapUrl)
       .then(function () { return loadScript(options.splitTypeUrl); })
-      .then(function () { runBehavior(options); })
       .catch(function () {
-        runBehavior(options);
+        return null;
       });
   }
 

@@ -606,11 +606,8 @@
           return promise;
         };
 
-        const getVisibleBreakpointRoot = () =>
-          Array.from(document.querySelectorAll(".breakpoint")).find((node) => isVisibleNode(node)) || document;
         const findInfrastructureTargets = () => {
-          const root = getVisibleBreakpointRoot();
-          const paragraphNodes = Array.from(root.querySelectorAll("p"));
+          const paragraphNodes = Array.from(document.querySelectorAll("p"));
           const clusters = new Map();
           paragraphNodes.forEach((node) => {
             const key = normalize(node.textContent);
@@ -1476,6 +1473,7 @@
           }
         ];
 
+        const BG_VIDEO = "https://storage.yandexcloud.net/pears/river.mp4";
         const ALTAI_BLOCK_HEIGHT_PX = 5000;
         const CARD_HOLD_PORTION = 0.82;
         const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -1525,8 +1523,14 @@
           const scene = document.createElement("div");
           scene.className = "altai2-scene";
 
-          const bg = document.createElement("div");
-          bg.className = "altai2-bg altai2-bg-static";
+          const video = document.createElement("video");
+          video.className = "altai2-bg";
+          video.src = BG_VIDEO;
+          video.autoplay = true;
+          video.muted = true;
+          video.loop = true;
+          video.playsInline = true;
+          video.preload = "metadata";
 
           const fade = document.createElement("div");
           fade.className = "altai2-fade";
@@ -1547,7 +1551,7 @@
             dots.appendChild(dot);
           });
 
-          scene.appendChild(bg);
+          scene.appendChild(video);
           scene.appendChild(fade);
           scene.appendChild(title);
           scene.appendChild(card);
@@ -2076,36 +2080,63 @@
 
 <script id="breakpoint-fallback">
   (function () {
-    var ORDER = ["mobile", "tablet", "laptop", "desktop", "wide"];
-    var pruned = false;
+    function isVisible(node) {
+      if (!node) return false;
+      var style = window.getComputedStyle(node);
+      if (style.display === "none" || style.visibility === "hidden") return false;
+      return node.getClientRects().length > 0;
+    }
 
-    function resolveActiveBreakpoint(width) {
-      if (width >= 1920) return "wide";
-      if (width >= 1440) return "desktop";
-      if (width >= 1280) return "laptop";
-      if (width >= 800) return "tablet";
-      return "mobile";
+    function findActiveBreakpointNode() {
+      var nodes = Array.prototype.slice.call(document.querySelectorAll("#container .breakpoint"));
+      for (var i = 0; i < nodes.length; i += 1) {
+        if (isVisible(nodes[i])) return nodes[i];
+      }
+      return nodes[0] || null;
+    }
+
+    function toggleNodeVideos(node, enabled) {
+      var videos = node.querySelectorAll("video");
+      for (var i = 0; i < videos.length; i += 1) {
+        var video = videos[i];
+        if (enabled) {
+          if (!video.getAttribute("src") && video.dataset.srcBackup) {
+            video.setAttribute("src", video.dataset.srcBackup);
+            video.load();
+          }
+          video.preload = "metadata";
+        } else {
+          if (video.getAttribute("src")) {
+            video.dataset.srcBackup = video.getAttribute("src");
+          }
+          video.pause();
+          video.removeAttribute("src");
+          video.preload = "none";
+          video.load();
+        }
+      }
     }
 
     function applyBreakpointVisibility() {
-      var active = resolveActiveBreakpoint(window.innerWidth || document.documentElement.clientWidth || 0);
-      ORDER.forEach(function (bp) {
-        var nodes = document.querySelectorAll(".bp-" + bp);
-        for (var i = 0; i < nodes.length; i += 1) {
-          var node = nodes[i];
-          if (bp === active) {
-            node.style.removeProperty("display");
-          } else {
-            if (!pruned) {
-              node.remove();
-            } else {
-              node.style.setProperty("display", "none", "important");
-            }
-          }
+      var activeNode = findActiveBreakpointNode();
+      var nodes = document.querySelectorAll("#container .breakpoint");
+      for (var i = 0; i < nodes.length; i += 1) {
+        var node = nodes[i];
+        var isActive = node === activeNode;
+        if (isActive) {
+          node.style.removeProperty("display");
+        } else {
+          node.style.setProperty("display", "none", "important");
         }
-      });
-      pruned = true;
-      document.documentElement.setAttribute("data-active-breakpoint", active);
+        toggleNodeVideos(node, isActive);
+      }
+      if (activeNode) {
+        var className = String(activeNode.className || "");
+        var match = className.match(/\bbp-([a-z]+)\b/i);
+        if (match && match[1]) {
+          document.documentElement.setAttribute("data-active-breakpoint", match[1].toLowerCase());
+        }
+      }
     }
 
     if (document.readyState === "loading") {
@@ -2116,31 +2147,6 @@
 
     window.addEventListener("resize", applyBreakpointVisibility, { passive: true });
     window.addEventListener("orientationchange", applyBreakpointVisibility, { passive: true });
-  })();
-</script>
-
-<script id="video-preload-policy">
-  (function () {
-    function applyVideoPolicy() {
-      var root = document.querySelector("#container .breakpoint");
-      if (!root) return;
-      var heroVideo = root.querySelector('video[src*="hero.mp4"], video[src*="hero-hd.mp4"]');
-      var videos = root.querySelectorAll("video");
-      for (var i = 0; i < videos.length; i += 1) {
-        var video = videos[i];
-        if (video === heroVideo) {
-          video.preload = "metadata";
-          continue;
-        }
-        video.preload = "none";
-      }
-    }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", applyVideoPolicy, { once: true });
-    } else {
-      applyVideoPolicy();
-    }
   })();
 </script>
 
