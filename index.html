@@ -959,19 +959,35 @@
           {
             key: "duet",
             fallbackPattern: "777c4a8cbcbe611eeeb9a355a425ca0542c9df1a",
-            folder: "images/objects/obj-01"
+            folder: "images/objects/obj-01",
+            images: [
+              "images/objects/obj-01/00.jpg",
+              "images/objects/obj-01/01.jpg",
+              "images/objects/obj-01/02.jpg",
+              "images/objects/obj-01/03.jpg",
+              "images/objects/obj-01/04.jpg",
+              "images/objects/obj-01/05.jpg"
+            ]
           },
           {
             key: "romashka",
             fallbackPattern: "5186cbafd5e45cbec85e25993f452f03410a442f",
-            folder: "images/objects/obj-02"
+            folder: "images/objects/obj-02",
+            images: [
+              "images/objects/obj-02/00.jpg",
+              "images/objects/obj-02/01.jpg",
+              "images/objects/obj-02/02.jpg",
+              "images/objects/obj-02/03.jpg",
+              "images/objects/obj-02/04.jpg",
+              "images/objects/obj-02/05.jpg"
+            ]
           }
         ];
         const MOTION_MS = 4000;
         const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "avif"];
         const MAX_PROBE_INDEX = 120;
         const IMAGE_COLLATOR = new Intl.Collator("ru", { numeric: true, sensitivity: "base" });
-        const DEBUG_OFFER_GALLERY_DISCOVERY = true;
+        const DEBUG_OFFER_GALLERY_DISCOVERY = false;
         const imagePreloadCache = new Map();
         const galleryImageCache = new Map();
         const initializedRoots = new WeakSet();
@@ -1124,6 +1140,11 @@
             return galleryImageCache.get(gallery.key);
           }
           const promise = (async () => {
+            if (Array.isArray(gallery.images) && gallery.images.length) {
+              const configured = sortImageList(gallery.images);
+              debugLog("resolved from config", gallery.key, configured);
+              return configured;
+            }
             const fromListing = await discoverFromDirectoryListing(gallery.folder);
             if (fromListing.length) {
               debugLog("resolved from listing", gallery.key, fromListing);
