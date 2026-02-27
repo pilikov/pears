@@ -1789,15 +1789,30 @@
       return null;
     }
 
+    var rootNodeCache = null;
+    var appliedOnce = false;
+
+    function getCachedRoots() {
+      if (rootNodeCache) return rootNodeCache;
+      rootNodeCache = Array.prototype.slice.call(document.querySelectorAll(ROOT_SELECTOR)).map(function (root) {
+        return {
+          root: root,
+          bp: getBreakpointName(root),
+          nodes: getTextNodes(root)
+        };
+      });
+      return rootNodeCache;
+    }
+
     function applyTexts(payload) {
       if (!payload || typeof payload !== "object" || !payload.texts) return;
 
-      var roots = Array.prototype.slice.call(document.querySelectorAll(ROOT_SELECTOR));
+      var roots = getCachedRoots();
       if (!roots.length) return;
 
-      roots.forEach(function (root) {
-        var bp = getBreakpointName(root);
-        var nodes = getTextNodes(root);
+      roots.forEach(function (entry) {
+        var bp = entry.bp;
+        var nodes = entry.nodes;
 
         for (var i = 0; i < nodes.length; i += 1) {
           var key = KEY_PREFIX + String(i + 1).padStart(3, "0");
@@ -1809,12 +1824,16 @@
     }
 
     function loadAndApply() {
+      if (appliedOnce) return;
       fetch(CMS_URL, { cache: "no-store" })
         .then(function (response) {
           if (!response.ok) throw new Error("Failed to load " + CMS_URL);
           return response.json();
         })
-        .then(applyTexts)
+        .then(function (payload) {
+          applyTexts(payload);
+          appliedOnce = true;
+        })
         .catch(function (error) {
           console.warn("[text-cms]", error);
         });
@@ -1825,7 +1844,6 @@
     } else {
       loadAndApply();
     }
-    window.addEventListener("load", loadAndApply, { once: true });
   })();
 </script>
 
