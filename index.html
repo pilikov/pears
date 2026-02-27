@@ -1753,6 +1753,11 @@
 	
 <script id="breakpoint-text-cms">
   (function () {
+    // Temporary kill-switch: index-based CMS remap can desync after dynamic DOM mutations.
+    // Keep disabled on production until key-based mapping is introduced.
+    var ENABLE_TEXT_CMS = false;
+    if (!ENABLE_TEXT_CMS) return;
+
     var CMS_URL = "texts.json";
     var ROOT_SELECTOR = "#container .breakpoint";
     var KEY_PREFIX = "text_";
