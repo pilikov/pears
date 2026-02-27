@@ -1823,8 +1823,13 @@
       })();
 	    </script>
 	
+<script id="disable-text-cms-flag">
+  window.__DISABLE_TEXT_CMS = true;
+</script>
+
 <script id="breakpoint-text-cms">
   (function () {
+    if (window.__DISABLE_TEXT_CMS) return;
     var ENABLE_TEXT_CMS = true;
     if (!ENABLE_TEXT_CMS) return;
 
@@ -2047,6 +2052,7 @@
 
 <script id="text006-sync">
   (function () {
+    if (window.__DISABLE_TEXT_CMS) return;
     var CMS_URL = "texts.json";
     if (!window.__text006) window.__text006 = "Клубная резиденция";
     if (!window.__text028) window.__text028 = "место силы";
@@ -2134,6 +2140,7 @@
 
 <script id="offers-key-sync">
   (function () {
+    if (window.__DISABLE_TEXT_CMS) return;
     var CMS_URL = "texts.json";
 
     function normalize(value) {
@@ -2649,6 +2656,7 @@
 
 <script id="final-json-reapply">
   (function () {
+    if (window.__DISABLE_TEXT_CMS) return;
     var CMS_URL = "texts.json";
 
     function normalize(value) {
@@ -2796,6 +2804,7 @@
 
 <script id="force-copy-all-breakpoints">
   (function () {
+    if (window.__DISABLE_TEXT_CMS) return;
     function normalize(value) {
       return String(value || "")
         .replace(/\u00A0/g, " ")
