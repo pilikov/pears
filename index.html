@@ -1893,28 +1893,6 @@
       });
     }
 
-    function setupAutoReapply(payload) {
-      var scheduled = false;
-      var observer = new MutationObserver(function () {
-        if (scheduled) return;
-        scheduled = true;
-        window.requestAnimationFrame(function () {
-          scheduled = false;
-          applyTexts(payload);
-        });
-      });
-      observer.observe(document.getElementById("container") || document.body, {
-        childList: true,
-        subtree: true,
-        characterData: true
-      });
-      [200, 600, 1200, 2000].forEach(function (delayMs) {
-        window.setTimeout(function () {
-          applyTexts(payload);
-        }, delayMs);
-      });
-    }
-
     function loadAndApply() {
       fetch(CMS_URL, { cache: "no-store" })
         .then(function (response) {
@@ -1923,7 +1901,6 @@
         })
         .then(function (payload) {
           applyTexts(payload);
-          setupAutoReapply(payload);
         })
         .catch(function (error) {
           console.warn("[text-cms]", error);
