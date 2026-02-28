@@ -1,0 +1,68 @@
+<svg width="904" height="872" viewBox="0 0 904 872" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="904" height="872" fill="#334A68"/>
+  <text x="156" y="112" fill="rgba(231,237,246,0.3)" font-family="Georgia, serif" font-size="28">РЕЗИДЕНЦИЯ 2</text>
+  <text x="156" y="188" fill="#E7EDF6" font-family="Georgia, serif" font-size="70">ПРОСТОРНЫЙ</text>
+  <text x="156" y="264" fill="#E7EDF6" font-family="Georgia, serif" font-size="70">ДОМ С ТЕРРАСОЙ</text>
+  <text x="156" y="352" fill="#E7EDF6" font-family="Arial, sans-serif" font-size="24">Для большой семьи, друзей и долгого проживания: всё</text>
+  <text x="156" y="384" fill="#E7EDF6" font-family="Arial, sans-serif" font-size="24">подготовлено, меблировано и готово к использованию.</text>
+
+  <text x="156" y="428" fill="rgba(231,237,246,0.3)" font-family="Arial, sans-serif" font-size="20">В ДОМЕ</text>
+  <text x="344" y="428" fill="rgba(231,237,246,0.3)" font-family="Arial, sans-serif" font-size="20">ГОСТИНАЯ</text>
+  <text x="532" y="428" fill="rgba(231,237,246,0.3)" font-family="Arial, sans-serif" font-size="20">КУХНЯ</text>
+
+  <g fill="#E7EDF6" font-family="Arial, sans-serif" font-size="16">
+    <text x="156" y="460">Панорамные окна</text>
+    <text x="156" y="486">Блэкаут шторы</text>
+    <text x="156" y="512">Умная колонка</text>
+    <text x="156" y="538">Тёплый пол</text>
+    <text x="156" y="564">Кондиционер</text>
+    <text x="156" y="590">Зеркало</text>
+    <text x="156" y="616">Wi-Fi</text>
+    <text x="344" y="460">Раскладной диван</text>
+    <text x="344" y="486">Журнальный столик</text>
+    <text x="344" y="512">Пуфик</text>
+    <text x="344" y="538">Телевизор</text>
+    <text x="532" y="460">Обеденный стол</text>
+    <text x="532" y="486">Кухонный остров</text>
+    <text x="532" y="512">Холодильник</text>
+    <text x="532" y="538">Микроволновая печь</text>
+    <text x="532" y="564">Посудомоечная машина</text>
+    <text x="532" y="590">Индукционная плита</text>
+    <text x="728" y="460">Посуда и столовые</text>
+    <text x="728" y="486">приборы</text>
+    <text x="728" y="512">Чайник</text>
+    <text x="728" y="538">Винный шкаф</text>
+    <text x="728" y="564">Мини-бар</text>
+  </g>
+
+  <line x1="156" y1="594" x2="324" y2="594" stroke="rgba(231,237,246,0.2)"/>
+  <line x1="344" y1="594" x2="508" y2="594" stroke="rgba(231,237,246,0.2)"/>
+  <line x1="532" y1="594" x2="706" y2="594" stroke="rgba(231,237,246,0.2)"/>
+  <line x1="728" y1="594" x2="904" y2="594" stroke="rgba(231,237,246,0.2)"/>
+
+  <text x="156" y="642" fill="rgba(231,237,246,0.3)" font-family="Arial, sans-serif" font-size="20">ГАРДЕРОБНАЯ</text>
+  <text x="344" y="642" fill="rgba(231,237,246,0.3)" font-family="Arial, sans-serif" font-size="20">СПАЛЬНИ</text>
+
+  <g fill="#E7EDF6" font-family="Arial, sans-serif" font-size="16">
+    <text x="156" y="674">Система хранения</text>
+    <text x="156" y="700">Гладильная доска и</text>
+    <text x="156" y="726">утюг</text>
+    <text x="156" y="752">Вешалки</text>
+    <text x="156" y="778">Сейф</text>
+    <text x="344" y="674">Кровати</text>
+    <text x="344" y="700">Письменные столы</text>
+    <text x="344" y="726">и стулья</text>
+    <text x="344" y="752">Телевизоры</text>
+    <text x="344" y="778">Постельное бельё</text>
+    <text x="538" y="748">211 м² · 2 этажа · 2 спальни</text>
+    <text x="538" y="774">от 117 500 000 рублей</text>
+  </g>
+
+  <line x1="156" y1="778" x2="324" y2="778" stroke="rgba(231,237,246,0.2)"/>
+  <line x1="344" y1="778" x2="516" y2="778" stroke="rgba(231,237,246,0.2)"/>
+  <line x1="536" y1="778" x2="760" y2="778" stroke="rgba(231,237,246,0.2)"/>
+
+  <rect x="156" y="806" width="353" height="64" rx="32" stroke="#E7EDF6" stroke-width="2"/>
+  <text x="181" y="845" fill="#E7EDF6" font-family="Arial, sans-serif" font-size="24">ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ</text>
+  <text x="468" y="845" fill="#E7EDF6" font-family="Arial, sans-serif" font-size="34">↗</text>
+</svg>

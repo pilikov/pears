@@ -1,0 +1,71 @@
+<svg width="960" height="930" viewBox="0 0 960 930" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="930" fill="#E8E0D0"/>
+  <text x="476" y="112" text-anchor="middle" fill="#728044" font-family="Georgia, serif" font-size="56">↓</text>
+
+  <rect x="80" y="170" width="350" height="452" fill="#EEE6D7" stroke="rgba(109,91,73,0.18)"/>
+  <text x="104" y="202" fill="#6D5B49" font-family="Georgia, serif" font-size="24">1 ЭТАЖ</text>
+  <g stroke="rgba(109,91,73,0.42)" fill="#F6F1E8">
+    <rect x="110" y="232" width="92" height="120"/>
+    <rect x="110" y="364" width="92" height="98"/>
+    <rect x="214" y="232" width="186" height="230"/>
+    <rect x="110" y="474" width="290" height="120"/>
+  </g>
+  <g fill="#6D5B49" font-family="Georgia, serif" font-size="16" text-anchor="middle">
+    <text x="156" y="292">ЛЕСТНИЦА</text>
+    <text x="156" y="418">САНУЗЕЛ</text>
+    <text x="307" y="350">ГАРАЖ</text>
+    <text x="255" y="540">КУХНЯ-ГОСТИНАЯ</text>
+  </g>
+  <g fill="#6D5B49" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">
+    <rect x="132" y="430" width="48" height="18" rx="9" stroke="rgba(109,91,73,0.32)"/>
+    <text x="156" y="443">4,8 м²</text>
+    <rect x="283" y="360" width="48" height="18" rx="9" stroke="rgba(109,91,73,0.32)"/>
+    <text x="307" y="373">25,1 м²</text>
+    <rect x="231" y="550" width="48" height="18" rx="9" stroke="rgba(109,91,73,0.32)"/>
+    <text x="255" y="563">40,9 м²</text>
+  </g>
+
+  <rect x="500" y="170" width="380" height="452" fill="#EEE6D7" stroke="rgba(109,91,73,0.18)"/>
+  <text x="524" y="202" fill="#6D5B49" font-family="Georgia, serif" font-size="24">2 ЭТАЖ</text>
+  <g stroke="rgba(109,91,73,0.42)" fill="#F6F1E8">
+    <rect x="530" y="232" width="180" height="82"/>
+    <rect x="722" y="232" width="128" height="82"/>
+    <rect x="530" y="326" width="98" height="110"/>
+    <rect x="640" y="326" width="98" height="110"/>
+    <rect x="750" y="326" width="100" height="110"/>
+    <rect x="530" y="448" width="138" height="124"/>
+    <rect x="682" y="448" width="138" height="124"/>
+    <rect x="530" y="584" width="290" height="80"/>
+  </g>
+  <g fill="#6D5B49" font-family="Georgia, serif" font-size="16" text-anchor="middle">
+    <text x="620" y="280">ЛЕСТНИЦА / ХОЛЛ</text>
+    <text x="786" y="280">ГАРДЕРОБ</text>
+    <text x="579" y="386">ВАННАЯ</text>
+    <text x="689" y="386">ВАННАЯ</text>
+    <text x="800" y="386">ХОЛЛ</text>
+    <text x="599" y="516">СПАЛЬНЯ</text>
+    <text x="751" y="516">СПАЛЬНЯ</text>
+    <text x="675" y="632">ТЕРРАСА</text>
+  </g>
+  <g fill="#6D5B49" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">
+    <rect x="762" y="288" width="48" height="18" rx="9" stroke="rgba(109,91,73,0.32)"/>
+    <text x="786" y="301">4,7 м²</text>
+    <rect x="555" y="394" width="48" height="18" rx="9" stroke="rgba(109,91,73,0.32)"/>
+    <text x="579" y="407">4,6 м²</text>
+    <rect x="665" y="394" width="48" height="18" rx="9" stroke="rgba(109,91,73,0.32)"/>
+    <text x="689" y="407">4,6 м²</text>
+    <rect x="776" y="394" width="48" height="18" rx="9" stroke="rgba(109,91,73,0.32)"/>
+    <text x="800" y="407">10,7 м²</text>
+    <rect x="575" y="524" width="48" height="18" rx="9" stroke="rgba(109,91,73,0.32)"/>
+    <text x="599" y="537">22,5 м²</text>
+    <rect x="727" y="524" width="48" height="18" rx="9" stroke="rgba(109,91,73,0.32)"/>
+    <text x="751" y="537">22,5 м²</text>
+    <rect x="651" y="640" width="48" height="18" rx="9" stroke="rgba(109,91,73,0.32)"/>
+    <text x="675" y="653">32,2 м²</text>
+  </g>
+
+  <rect x="448" y="700" width="248" height="32" rx="16" stroke="rgba(109,91,73,0.24)"/>
+  <rect x="448" y="700" width="98" height="32" rx="16" stroke="rgba(109,91,73,0.42)"/>
+  <text x="497" y="721" text-anchor="middle" fill="#6D5B49" font-family="Arial, sans-serif" font-size="14">LAYOUT</text>
+  <text x="620" y="721" text-anchor="middle" fill="rgba(109,91,73,0.76)" font-family="Arial, sans-serif" font-size="14">FLOOR LAYOUT</text>
+</svg>

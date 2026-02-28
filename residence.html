@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Резиденция 1 — Компактный семейный дом</title>
+
+<!-- Project fonts & base styles -->
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* ─── LOCAL OVERRIDES (object page only) ─── */
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #2f4159;
+    --text: #e7edf6;
+    --text-dim: rgba(231, 237, 246, 0.3);
+    --border: rgba(255, 255, 255, 0.2);
+    --cream: #f7f4ea;
+  }
+
+  body {
+    background: var(--bg);
+    font-family: "Corpus:Regular", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--text);
+  }
+
+  /* ─── NAV ─── */
+  .obj-nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1200;
+    background: linear-gradient(180deg, rgba(210,221,224,0.22), rgba(187,206,210,0.16));
+    backdrop-filter: blur(10px) saturate(1.02);
+    -webkit-backdrop-filter: blur(10px) saturate(1.02);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 32px;
+  }
+
+  .obj-nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.7);
+    font-family: "Corpus:Regular", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .obj-nav-back:hover { color: #fff; }
+
+  .obj-nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .obj-nav-logo img { width: 34px; }
+
+  /* ─── MAIN LAYOUT ─── */
+  .main {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 56px;
+    min-height: 100dvh;
+  }
+
+  /* ─── LEFT PANEL ─── */
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 104px 0 80px 156px;
+    min-width: 0;
+  }
+
+  .header-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 588px;
+  }
+
+  .residence-label {
+    display: block;
+    font-family: "Corpus:Regular", sans-serif;
+    font-style: normal;
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.5);
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.5);
+    font-variant-caps: small-caps;
+    font-feature-settings: "ordn" 1, "salt" 1, "dlig" 1;
+    white-space: pre;
+  }
+
+  .main-title {
+    font-family: "Retros:Light", sans-serif;
+    font-size: 128px;
+    line-height: 128px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--text);
+    white-space: pre-wrap;
+  }
+
+  .subtitle {
+    font-family: "Corpus:Regular", sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--text);
+  }
+
+  /* ─── FEATURES ─── */
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .feature-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .feature-row-1 {
+    height: 218px;
+    justify-content: space-between;
+  }
+
+  .feature-row-2 {
+    width: 550px;
+    height: 158px;
+    gap: 24px;
+  }
+
+  .feature-col {
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    align-self: stretch;
+  }
+
+  .feature-col.max-164 { max-width: 164px; }
+  .feature-col.no-label { justify-content: center; padding-top: 32px; flex: none; width: 174px; }
+  .feature-col.end-col { justify-content: flex-end; }
+
+  .col-label {
+    font-family: "Corpus:Regular", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--text-dim);
+    font-variant-caps: small-caps;
+    letter-spacing: 0.04em;
+  }
+
+  .col-items {
+    font-family: "Corpus:Regular", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* ─── CTA ─── */
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid var(--text);
+    border-radius: 50px;
+    padding: 14px 12px 18px 24px;
+    cursor: pointer;
+    width: fit-content;
+    background: transparent;
+    transition: background 0.24s, color 0.24s;
+  }
+
+  .cta-btn:hover { background: var(--text); }
+  .cta-btn:hover .cta-label { color: var(--bg); }
+  .cta-btn:hover .cta-icon { filter: invert(1); }
+
+  .cta-label {
+    font-family: "Corpus:Regular", sans-serif;
+    font-size: 20px;
+    line-height: normal;
+    color: var(--text);
+    letter-spacing: 0;
+    white-space: nowrap;
+    transition: color 0.24s;
+  }
+
+  .cta-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    transition: filter 0.24s;
+  }
+
+  /* ─── RIGHT IMAGE PANEL ─── */
+  .right {
+    background: rgba(255, 255, 255, 0.05);
+    width: 960px;
+    flex-shrink: 0;
+    min-height: 100dvh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 110px 40px 40px 24px;
+  }
+
+  .right img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  /* ─── RESPONSIVE ─── */
+
+  @media (max-width: 1600px) {
+    .left { padding: 104px 0 80px 80px; }
+    .right { width: 700px; }
+    .main-title { font-size: 96px; line-height: 96px; }
+  }
+
+  @media (max-width: 1280px) {
+    .main { gap: 32px; }
+    .left { padding: 104px 0 60px 48px; }
+    .right {
+      width: 520px;
+      padding: 100px 24px 24px 16px;
+    }
+    .main-title { font-size: 84px; line-height: 84px; }
+    .feature-col.max-164 { max-width: 130px; }
+    .feature-row-2 { width: 100%; }
+  }
+
+  @media (max-width: 1024px) {
+    .main { flex-direction: column; gap: 0; min-height: auto; }
+    .left { padding: 96px 40px 48px 40px; }
+    .right {
+      width: 100%;
+      height: 60vw;
+      min-height: 400px;
+      padding: 32px 32px 40px;
+    }
+    .right img {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      display: block;
+    }
+    .main-title { font-size: 72px; line-height: 72px; }
+    .header-block { max-width: 100%; }
+    .feature-row-1 { height: auto; gap: 20px; flex-wrap: wrap; }
+    .feature-col.max-164 { max-width: none; min-width: 130px; }
+    .feature-col.no-label { width: auto; flex: 1 0 0; padding-top: 0; justify-content: flex-start; }
+    .feature-row-2 { width: 100%; height: auto; gap: 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .left { padding: 88px 24px 40px 24px; }
+    .main-title { font-size: 56px; line-height: 56px; }
+    .subtitle { font-size: 18px; }
+    .feature-row-1 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; height: auto; }
+    .feature-col.no-label { width: auto; }
+    .feature-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; width: 100%; height: auto; }
+    .feature-col.end-col { justify-content: flex-start; }
+    .right {
+      height: 75vw;
+      padding: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .left { padding: 80px 16px 32px 16px; }
+    .main-title { font-size: 42px; line-height: 42px; }
+    .right {
+      height: 90vw;
+      padding: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="obj-nav">
+  <a class="obj-nav-back" href="index.html">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    все резиденции
+  </a>
+  <div class="obj-nav-logo">
+    <img src="images/7dfcbe4266fc6f900e1812709aae7d4ebe3725eb.png" alt="Грушевый Цвет">
+  </div>
+  <div></div>
+</nav>
+
+<!-- PAGE -->
+<div class="main">
+
+  <!-- LEFT -->
+  <div class="left">
+
+    <div class="header-block">
+      <div class="residence-label">резиденция 1</div>
+      <div class="main-title">Компактный<br>семейный дом</div>
+      <p class="subtitle">Всё, что нужно для жизни, уже расставлено, подключено и готово к использованию.</p>
+    </div>
+
+    <div class="features">
+
+      <!-- Row 1 -->
+      <div class="feature-row feature-row-1">
+        <div class="feature-col max-164">
+          <div class="col-label">в доме</div>
+          <div class="col-items">
+            <span>Панорамные окна</span>
+            <span>Блэкаут шторы</span>
+            <span>Умная колонка</span>
+            <span>Тёплый пол</span>
+            <span>Кондиционер</span>
+            <span>Зеркало</span>
+            <span>Wi-Fi</span>
+          </div>
+        </div>
+        <div class="feature-col max-164">
+          <div class="col-label">гостиная</div>
+          <div class="col-items">
+            <span>Раскладной диван</span>
+            <span>Журнальный столик</span>
+            <span>Пуфик</span>
+            <span>Телевизор</span>
+          </div>
+        </div>
+        <div class="feature-col max-164">
+          <div class="col-label">кухня</div>
+          <div class="col-items">
+            <span>Обеденный стол</span>
+            <span>Кухонный остров</span>
+            <span>Холодильник</span>
+            <span>Микроволновая печь</span>
+            <span>Посудомоечная машина</span>
+            <span>Индукционная плита</span>
+          </div>
+        </div>
+        <div class="feature-col no-label">
+          <div class="col-items">
+            <span>Посуда и столовые приборы</span>
+            <span>Чайник</span>
+            <span>Винный шкаф</span>
+            <span>Мини-бар</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="feature-row feature-row-2">
+        <div class="feature-col">
+          <div class="col-label">гардеробная</div>
+          <div class="col-items">
+            <span>Система хранения</span>
+            <span>Гладильная доска и утюг</span>
+            <span>Вешалки</span>
+            <span>Сейф</span>
+          </div>
+        </div>
+        <div class="feature-col">
+          <div class="col-label">спальня</div>
+          <div class="col-items">
+            <span>Кровать</span>
+            <span>Письменный стол и стул</span>
+            <span>Телевизор</span>
+            <span>Постельное бельё</span>
+          </div>
+        </div>
+        <div class="feature-col end-col">
+          <div class="col-items">
+            <span>70 м² · 2 спальни</span>
+            <span>от 52 500 000 ₽</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <button class="cta-btn">
+        <span class="cta-label">получить предложение</span>
+        <img
+          class="cta-icon"
+          src="https://www.figma.com/api/mcp/asset/ec71cf43-9a4c-474c-b6ac-cc9b2254cf23"
+          alt="→"
+        />
+      </button>
+
+    </div>
+  </div>
+
+  <!-- RIGHT: floor plan -->
+  <div class="right">
+    <img
+      src="images/1scheme.png"
+      alt="План резиденции 1"
+    />
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -681,6 +681,15 @@ body::after {
 #container .css-a8ckuu {position: relative; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 12px;}
 #container .css-222xmq {font-family: "Corpus:Regular",sans-serif; word-break: break-word; font-style: normal; font-size: 0; letter-spacing: 0px; line-height: 0;}
 #container .css-vwzf36 {white-space: pre-wrap; line-height: 0;}
+#container .section-offers .css-vwzf36 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  white-space: normal;
+}
+#container .section-offers .css-vwzf36 > span {display: block;}
+#container .section-offers .css-vwzf36 br {display: none;}
 #container .css-jjxt0x {font-size: 20px; line-height: 20px;}
 #container .css-q0i9zs {font-size: 16px; line-height: 20px;}
 #container .css-8y1gdg {color: #e7edf6; -webkit-text-fill-color: #e7edf6;}
@@ -890,8 +899,12 @@ body::after {
   background: rgba(46, 66, 92, 0.9);
   border-radius: 16px;
   border: none;
+  overflow: hidden;
   padding: 32px;
   color: #eaf0f8;
+  box-shadow: 0 24px 64px rgba(8, 15, 24, 0.28);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   transition: background-color 360ms ease;
 }
 
