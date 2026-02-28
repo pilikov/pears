@@ -10,10 +10,10 @@
   function getOfferHref(card) {
     var text = normalize(card.textContent);
     if (text.indexOf("для семьи и друзей") !== -1 || text.indexOf("компактные семейные дома") !== -1) {
-      return "flat-1.html";
+      return "residence.html";
     }
     if (text.indexOf("для большой компании") !== -1 || text.indexOf("видом на горы и сад") !== -1) {
-      return "flat-2.html";
+      return "residence-2.html";
     }
     return "";
   }
